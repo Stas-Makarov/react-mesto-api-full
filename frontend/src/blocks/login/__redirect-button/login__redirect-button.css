@@ -1,0 +1,21 @@
+.login__redirect-button {
+    margin: 15px 0 50px;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    text-decoration: none;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    background-color: transparent;
+    color: #ffffff;
+    transition: opacity 0.2s linear;
+    cursor: pointer;
+}
+
+.login__redirect-button:hover {
+    opacity: 0.6;
+}

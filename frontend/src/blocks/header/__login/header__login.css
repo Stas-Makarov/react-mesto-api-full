@@ -1,0 +1,17 @@
+.header__login {
+    padding: 0;  
+    border: 0;
+    text-decoration: none;  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #ffffff;
+    transition: opacity, 0.2s;
+    cursor: pointer;
+}
+
+.header__login:hover {
+    opacity: 0.6;
+}

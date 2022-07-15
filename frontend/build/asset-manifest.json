@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.21bd43ab.css",
+    "main.js": "/static/js/main.fa85294b.js",
+    "static/js/787.2df4b1c8.chunk.js": "/static/js/787.2df4b1c8.chunk.js",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.7bb6234314ccc72c942a.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.e148c4a1158f8cee8285.woff",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.768169b1912340d378ac.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.26a30a5f1103393aac70.woff2",
+    "static/media/лого.svg": "/static/media/лого.03b78ada3425e9132ff3db7ea8f4a6f6.svg",
+    "static/media/сердце.svg": "/static/media/сердце.87ed371465c7a6a1cd01.svg",
+    "index.html": "/index.html",
+    "static/media/unsuccess-reg.svg": "/static/media/unsuccess-reg.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/корзина.svg": "/static/media/корзина.823b0cf1b0b7e9cb7cad.svg",
+    "static/media/success-reg.svg": "/static/media/success-reg.1b6082f862eac35e2514460237d96ecc.svg",
+    "static/media/сердце.актив.svg": "/static/media/сердце.актив.fe17a515669479b1e649.svg",
+    "static/media/карандаш.svg": "/static/media/карандаш.8667ac4a523e8fc42e59.svg",
+    "static/media/карандаш.авы.svg": "/static/media/карандаш.авы.a086f758840ae814ecde.svg",
+    "static/media/крестик.svg": "/static/media/крестик.2ceb783afbab75916ddc.svg",
+    "static/media/плюс.svg": "/static/media/плюс.d86bb2edc2f6eadb96b7.svg",
+    "main.21bd43ab.css.map": "/static/css/main.21bd43ab.css.map",
+    "main.fa85294b.js.map": "/static/js/main.fa85294b.js.map",
+    "787.2df4b1c8.chunk.js.map": "/static/js/787.2df4b1c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21bd43ab.css",
+    "static/js/main.fa85294b.js"
+  ]
+}

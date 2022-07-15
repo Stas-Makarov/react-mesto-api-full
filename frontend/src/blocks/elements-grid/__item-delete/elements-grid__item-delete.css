@@ -1,0 +1,21 @@
+.elements-grid__item-delete {
+    background-image: url('../../../images/корзина.svg');
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 18px;
+    height: 19px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-size: 18px;
+    background-position: center;
+    background-color: transparent;
+    display: none;
+}
+
+.elements-grid__item-delete:hover {
+    opacity: 0.5;
+    transition: opacity, .3s;
+}
