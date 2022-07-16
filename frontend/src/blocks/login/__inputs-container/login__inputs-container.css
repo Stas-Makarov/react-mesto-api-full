@@ -1,0 +1,8 @@
+.login__inputs-container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    flex-direction: column;
+    width: 100%;
+}
