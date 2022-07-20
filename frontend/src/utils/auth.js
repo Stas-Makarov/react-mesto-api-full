@@ -1,43 +1,46 @@
 export const BASE_URL = 'http://api.s.d.domainname.students.nomoredomains.xyz/';
 
-const handleResponse = (res) => {
+const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
-  return res.json().then((res) => {
-    return Promise.reject(`Ошибка: ${res.error === undefined ? res.message : res.error}`);
-  });
+
+  return res.json()
+      .then((data) => {
+        throw new Error(data.error);
+      });
 };
 
-export const register = (email, password) => {
+export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email, password}),
-  }).then(handleResponse);
+    body: JSON.stringify({"password": password, "email": email})
+  })
 };
 
-export const authorize = (email, password) => {
+export const authorize = (identifier, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email, password}),
-  }).then(handleResponse);
+    body: JSON.stringify({"email": identifier, "password": password}),
+    credentials: 'include'
+  })
+  .then(checkResponse)
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
-      Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
     },
-  }).then(handleResponse);
-};
+    credentials: 'include'
+  })
+  .then(checkResponse)
+}
