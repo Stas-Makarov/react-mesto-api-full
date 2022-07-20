@@ -46,7 +46,7 @@ export const getContent = (jwt) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        authorization: jwt
+        authorization: `Bearer ${jwt}`
       },
       credentials: 'include',
     })
