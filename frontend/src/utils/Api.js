@@ -1,6 +1,6 @@
 class Api {
-    constructor(options) {
-      this._options = options;
+    constructor({baseUrl}) {
+      this._baseUrl = baseUrl;
       }
   
     _checkResponse(res) {
@@ -11,58 +11,67 @@ class Api {
     }
   
     getInitialCards() {
-      return fetch(`${this._options.baseUrl}cards`, {
+      return fetch(`${this._baseUrl}cards`, {
         method: 'GET',
-        headers: this._options.headers,
-        credentials: 'include',
+        headers: {
+          authorization: localStorage.getItem('jwt')
+        }
       })
-      .then(res => this._checkResponse(res));
+      .then(this._checkResponse);
     }
   
     getUserInfo() {
-      return fetch(`${this._options.baseUrl}users/me`, {
+      return fetch(`${this._baseUrl}users/me`, {
         method: 'GET',
-        headers: this._options.headers,
-        credentials: 'include',
+        headers: {
+          authorization: localStorage.getItem('jwt')
+        }
       })
-      .then(res => this._checkResponse(res)); 
+      .then(this._checkResponse); 
     }
   
     updateUserInfo(data) {
-      return fetch(`${this._options.baseUrl}users/me`, {
+      return fetch(`${this._baseUrl}users/me`, {
         method: 'PATCH',
-        headers: this._options.headers,
-        body: JSON.stringify(data),
-        credentials: 'include'
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({name: data.name, about: data.about})
       })
-      .then(res => this._checkResponse(res));
+      .then(this._checkResponse);
     }
   
     addNewCard(data) {
-      return fetch(`${this._options.baseUrl}cards`, {
+      return fetch(`${this._baseUrl}cards`, {
         method: 'POST',
-        headers: this._options.headers,
-        body: JSON.stringify(data),
-        credentials: 'include' 
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json'
+      },
+        body: JSON.stringify(data)
       })
-      .then(res => this._checkResponse(res));
+      .then(this._checkResponse);
     }
   
     changeLikeCardStatus(id, isLiked) {
-      return fetch(`${this._options.baseUrl}cards/likes/${id}`, {
+      return fetch(`${this._baseUrl}cards/likes/${id}`, {
         method: `${isLiked ? 'DELETE' : 'PUT'}`,
-        headers: this._options.headers,
-        credentials: 'include',
+        headers: {
+          authorization: localStorage.getItem('jwt')
+      }
       })
-      .then(res => this._checkResponse(res));
+      .then(this._checkResponse);
     }
   
     editAvatar(data) {
-      return fetch(`${this._options.baseUrl}users/me/avatar`, {
+      return fetch(`${this._baseUrl}users/me/avatar`, {
         method: 'PATCH',
-        headers: this._options.headers,
-        body: JSON.stringify(data),
-        credentials: 'include',
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json'
+      },
+        body: JSON.stringify(data)
       })
       .then(this._checkResponse);
     }
@@ -70,17 +79,16 @@ class Api {
     deleteCard(id) {
       return fetch(`${this._baseUrl}cards/${id}`, {
         method: 'DELETE',
-        headers: this._headers
+        headers: {
+          authorization: localStorage.getItem('jwt')
+      }
       })
-      .then(res => this._checkResponse(res));
+      .then(this._checkResponse);
     }
   }
 
   export const api = new Api({
-    baseUrl: 'http://api.s.d.domainname.students.nomoredomains.xyz/',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    baseUrl: 'http://api.s.d.domainname.students.nomoredomains.xyz/'
   });
 
   
