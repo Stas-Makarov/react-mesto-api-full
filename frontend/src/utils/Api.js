@@ -15,7 +15,8 @@ class Api {
         method: 'GET',
         headers: {
           authorization: localStorage.getItem('jwt')
-        }
+        },
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }
@@ -25,7 +26,8 @@ class Api {
         method: 'GET',
         headers: {
           authorization: localStorage.getItem('jwt')
-        }
+        },
+        credentials: 'include',
       })
       .then(this._checkResponse); 
     }
@@ -36,8 +38,9 @@ class Api {
         headers: {
           authorization: localStorage.getItem('jwt'),
           'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({name: data.name, about: data.about})
+        },
+        body: JSON.stringify({name: data.name, about: data.about}),
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }
@@ -48,8 +51,9 @@ class Api {
         headers: {
           authorization: localStorage.getItem('jwt'),
           'Content-Type': 'application/json'
-      },
-        body: JSON.stringify(data)
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }
@@ -59,7 +63,8 @@ class Api {
         method: `${isLiked ? 'DELETE' : 'PUT'}`,
         headers: {
           authorization: localStorage.getItem('jwt')
-      }
+        },
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }
@@ -70,8 +75,9 @@ class Api {
         headers: {
           authorization: localStorage.getItem('jwt'),
           'Content-Type': 'application/json'
-      },
-        body: JSON.stringify(data)
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }
@@ -81,7 +87,8 @@ class Api {
         method: 'DELETE',
         headers: {
           authorization: localStorage.getItem('jwt')
-      }
+        },
+        credentials: 'include',
       })
       .then(this._checkResponse);
     }

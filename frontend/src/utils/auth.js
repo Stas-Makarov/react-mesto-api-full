@@ -17,7 +17,8 @@ export const register = (email, password) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({email, password}),
+    credentials: 'include',
   })
   .then((responce) => checkResponse(responce))
 }; 
@@ -28,7 +29,8 @@ export const authorize = (email, password) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({email, password}),
+      credentials: 'include',
     })
     .then((responce) => checkResponse(responce))
     .then((data) => {
@@ -45,7 +47,8 @@ export const getContent = (jwt) => {
       headers: {
         'Content-Type': 'application/json',
         authorization: jwt
-      }
+      },
+      credentials: 'include',
     })
     .then((responce) => checkResponse(responce))
 };

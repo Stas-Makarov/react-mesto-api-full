@@ -4,7 +4,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-const { cors } = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 const { login, createUser } = require('./controllers/user');
 const { auth } = require('./middlewares/auth');
 const regex = require('./utils/constans');
