@@ -4,7 +4,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-const cors = require('cors');
+const { cors } = require('./middlewares/cors');
 const { login, createUser } = require('./controllers/user');
 const { auth } = require('./middlewares/auth');
 const regex = require('./utils/constans');
@@ -20,19 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(cors({
-  credentials: true,
-  origin: [
-    'https://localhost:3001',
-    'https://localhost:3000',
-    'http://localhost:3001',
-    'http://localhost:3000',
-    'http://api.s.d.domainname.students.nomoredomains.xyz',
-    'https://api.s.d.domainname.students.nomoredomains.xyz',
-    'http://s.d.domainname.students.nomoredomains.xyz',
-    'https://s.d.domainname.students.nomoredomains.xyz',
-  ],
-}));
+app.use(cors);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
