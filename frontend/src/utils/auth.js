@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.s.d.domainname.students.nomoredomains.xyz/';
+export const BASE_URL = 'http://api.s.d.domainname.students.nomoredomains.xyz';
 
 const checkResponse = (res) => {
   if (res.ok) {
