@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
@@ -14,8 +15,6 @@ const app = express();
 const { PORT = 3000 } = process.env;
 
 const allowedCors = [
-  'https://praktikum.tk',
-  'http://praktikum.tk',
   'localhost:3000',
   'http://localhost:3000',
   'https://s.d.domainname.students.nomoredomains.xyz',
@@ -23,23 +22,11 @@ const allowedCors = [
   'https://api.s.d.domainname.students.nomoredomains.xyz',
   'https://api.s.d.domainname.students.nomoredomains.xyz',
 ];
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', true);
-  }
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    return res.end();
-  }
-  next();
-  return null;
-});
+app.use(
+  cors({
+    origin: allowedCors,
+  }),
+);
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
