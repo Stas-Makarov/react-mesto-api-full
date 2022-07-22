@@ -95,7 +95,7 @@ class Api {
   }
 
   export const api = new Api({
-    baseUrl: 'http://api.s.d.domainname.students.nomoredomains.xyz'
+    baseUrl: 'https://api.s.d.domainname.students.nomoredomains.xyz'
    });
 
   
