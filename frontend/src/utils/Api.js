@@ -27,21 +27,21 @@ class Api {
       .then(this._checkResponse); 
     }
   
-    updateUserInfo(data) {
+    updateUserInfo(name, about) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify({name: data.name, about: data.about}),
+        body: JSON.stringify({ name, about }),
         credentials: 'include',
       })
       .then(this._checkResponse);
     }
   
-    addNewCard(data) {
+    addNewCard(name, link) {
       return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
         headers: this._headers,
-        body: JSON.stringify(data),
+        body: JSON.stringify({ name, link }),
         credentials: 'include',
       })
       .then(this._checkResponse);
@@ -56,11 +56,11 @@ class Api {
       .then(this._checkResponse);
     }
   
-    editAvatar(data) {
+    editAvatar(avatar) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify(data),
+        body: JSON.stringify(avatar),
         credentials: 'include',
       })
       .then(this._checkResponse);
