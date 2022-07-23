@@ -3,4 +3,4 @@
 
 IP 62.84.121.219
 
-Ссылка http://s.d.domainname.students.nomoredomains.xyz/
+Ссылка https://s.d.domainname.students.nomoredomains.xyz/
