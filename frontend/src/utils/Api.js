@@ -11,7 +11,7 @@ class Api {
     }
   
     getInitialCards() {
-      return fetch(`${this._baseUrl}cards`, {
+      return fetch(`${this._baseUrl}/cards`, {
         method: 'GET',
         headers: {
           authorization: localStorage.getItem('jwt')
@@ -22,7 +22,7 @@ class Api {
     }
   
     getUserInfo() {
-      return fetch(`${this._baseUrl}users/me`, {
+      return fetch(`${this._baseUrl}/users/me`, {
         method: 'GET',
         headers: {
           authorization: localStorage.getItem('jwt')
@@ -33,7 +33,7 @@ class Api {
     }
   
     updateUserInfo(data) {
-      return fetch(`${this._baseUrl}users/me`, {
+      return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
         headers: {
           authorization: localStorage.getItem('jwt'),
@@ -46,7 +46,7 @@ class Api {
     }
   
     addNewCard(data) {
-      return fetch(`${this._baseUrl}cards`, {
+      return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
         headers: {
           authorization: localStorage.getItem('jwt'),
@@ -59,7 +59,7 @@ class Api {
     }
   
     changeLikeCardStatus(id, isLiked) {
-      return fetch(`${this._baseUrl}cards/likes/${id}`, {
+      return fetch(`${this._baseUrl}/cards/likes/${id}`, {
         method: `${isLiked ? 'DELETE' : 'PUT'}`,
         headers: {
           authorization: localStorage.getItem('jwt')
@@ -70,7 +70,7 @@ class Api {
     }
   
     editAvatar(data) {
-      return fetch(`${this._baseUrl}users/me/avatar`, {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: {
           authorization: localStorage.getItem('jwt'),
@@ -83,7 +83,7 @@ class Api {
     }
   
     deleteCard(id) {
-      return fetch(`${this._baseUrl}cards/${id}`, {
+      return fetch(`${this._baseUrl}/cards/${id}`, {
         method: 'DELETE',
         headers: {
           authorization: localStorage.getItem('jwt')
@@ -97,5 +97,3 @@ class Api {
   export const api = new Api({
     baseUrl: 'https://api.s.d.domainname.students.nomoredomains.xyz'
    });
-
-  
