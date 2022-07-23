@@ -6,7 +6,7 @@ function Card(props) {
 
     const currentUser = useContext(CurrentUserContext);
 
-    const isOwn = props.owner === currentUser._id;
+    const isOwn = props.owner._id === currentUser._id;
     const cardDeleteButtonClassName = (`elements-grid__item-delete ${isOwn ? 'elements-grid__item-delete_active' : ''}`);
     
     const isLiked = props.card.likes.some(like => like._id === currentUser._id);
