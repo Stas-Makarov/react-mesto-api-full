@@ -1,6 +1,7 @@
 class Api {
-    constructor({baseUrl}) {
+    constructor({baseUrl, headers}) {
       this._baseUrl = baseUrl;
+      this._headers = headers;
       }
   
     _checkResponse(res) {
@@ -12,10 +13,7 @@ class Api {
   
     getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
-        method: 'GET',
-        headers: {
-          authorization: localStorage.getItem('jwt')
-        },
+        headers: this._headers,
         credentials: 'include',
       })
       .then(this._checkResponse);
@@ -23,10 +21,7 @@ class Api {
   
     getUserInfo() {
       return fetch(`${this._baseUrl}/users/me`, {
-        method: 'GET',
-        headers: {
-          authorization: localStorage.getItem('jwt')
-        },
+        headers: this._headers,
         credentials: 'include',
       })
       .then(this._checkResponse); 
@@ -35,10 +30,7 @@ class Api {
     updateUserInfo(data) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
-        headers: {
-          authorization: localStorage.getItem('jwt'),
-          'Content-Type': 'application/json'
-        },
+        headers: this._headers,
         body: JSON.stringify({name: data.name, about: data.about}),
         credentials: 'include',
       })
@@ -48,10 +40,7 @@ class Api {
     addNewCard(data) {
       return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
-        headers: {
-          authorization: localStorage.getItem('jwt'),
-          'Content-Type': 'application/json'
-        },
+        headers: this._headers,
         body: JSON.stringify(data),
         credentials: 'include',
       })
@@ -61,9 +50,7 @@ class Api {
     changeLikeCardStatus(id, isLiked) {
       return fetch(`${this._baseUrl}/cards/likes/${id}`, {
         method: `${isLiked ? 'DELETE' : 'PUT'}`,
-        headers: {
-          authorization: localStorage.getItem('jwt')
-        },
+        headers: this._headers,
         credentials: 'include',
       })
       .then(this._checkResponse);
@@ -72,10 +59,7 @@ class Api {
     editAvatar(data) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: 'PATCH',
-        headers: {
-          authorization: localStorage.getItem('jwt'),
-          'Content-Type': 'application/json'
-        },
+        headers: this._headers,
         body: JSON.stringify(data),
         credentials: 'include',
       })
@@ -85,9 +69,7 @@ class Api {
     deleteCard(id) {
       return fetch(`${this._baseUrl}/cards/${id}`, {
         method: 'DELETE',
-        headers: {
-          authorization: localStorage.getItem('jwt')
-        },
+        headers: this._headers,
         credentials: 'include',
       })
       .then(this._checkResponse);
