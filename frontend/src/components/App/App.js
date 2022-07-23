@@ -13,7 +13,7 @@ import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
 import InfoTooltip from '../InfoTooltip/InfoTooltip.js';
 import * as auth from "../../utils/auth.js";
-import CurrentUserContext from '../../../contexts/CurrentUserContext.js';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.js';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 
