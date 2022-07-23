@@ -15,11 +15,7 @@ const app = express();
 const { PORT = 3000 } = process.env;
 
 const allowedCors = [
-  'localhost:3000',
   'http://localhost:3000',
-  'https://s.d.domainname.students.nomoredomains.xyz',
-  'http://s.d.domainname.students.nomoredomains.xyz',
-  'https://api.s.d.domainname.students.nomoredomains.xyz',
   'https://api.s.d.domainname.students.nomoredomains.xyz',
 ];
 app.use(
@@ -29,7 +25,7 @@ app.use(
   }),
 );
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
