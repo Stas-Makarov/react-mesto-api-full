@@ -7,7 +7,7 @@ const ValidationError = require('../errors/ValidationError');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch(next);
 };
 
@@ -17,7 +17,7 @@ module.exports.getUsersById = (req, res, next) => {
       if (user === null) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch(next);
 };
@@ -66,7 +66,7 @@ module.exports.updateProfile = (req, res, next) => {
       if (user === null) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch(next);
 };
@@ -82,7 +82,7 @@ module.exports.updateAvatar = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь по указанному _id не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch(next);
 };
