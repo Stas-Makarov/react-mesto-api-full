@@ -27,7 +27,7 @@ class Api {
       .then(this._checkResponse); 
     }
   
-    updateUserInfo(name, about) {
+    updateUserInfo({ name, about }) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
