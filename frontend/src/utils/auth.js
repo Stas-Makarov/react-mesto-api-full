@@ -34,12 +34,6 @@ export const authorize = (email, password) => {
       credentials: 'include',
     })
     .then((responce) => checkResponse(responce))
-    .then((data) => {
-        if (data.token){
-            localStorage.setItem('jwt', data.token);
-            return data;
-        }
-    })
 };
 
 export const getContent = (jwt) => {
