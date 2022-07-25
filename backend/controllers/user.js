@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const ValidationError = require('../errors/ValidationError');
+const EmailUniqueError = require('../errors/EmailUniqueError');
 
 const { NODE_ENV, SECRET_KEY } = process.env;
 
@@ -41,13 +42,13 @@ module.exports.createUser = (req, res, next) => {
       });
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new ValidationError('Переданы некорректные данные при создании пользователя.'));
-        return;
+      if (err.code === 11000) {
+        return next(new EmailUniqueError('Емейл занят'));
+      } if (err.name === 'ValidationError') {
+        return next(new ValidationError('Переданы некорректные данные при создании пользователя.'));
       }
-      next(err);
-    })
-    .catch(next);
+      return next(err);
+    });
 };
 
 module.exports.updateProfile = (req, res, next) => {
